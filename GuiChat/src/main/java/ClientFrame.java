@@ -100,7 +100,26 @@ public class ClientFrame extends JFrame {
         if (word == null || word.trim().equals(""))
             return;
         jtf.setText("");
-        out.println(word);
+//        out.println(word);
+        String us = Server.CHAT_FLAT_START;
+        List<String> vals = list.getSelectedValuesList();
+        boolean isAll = false;
+        for (String val : vals){
+            if(val.equals("所有人")){
+                isAll = true;
+                break;
+            } else {
+                us += val+",";
+            }
+        }
+        if (vals.size()==0)
+            isAll = true;
+        if (isAll){
+            us = Server.CHAT_FLAT_START;
+            out.println(us+"all"+Server.CHAT_FLAT_END+word);
+        } else {
+            out.println(us+Server.CHAT_FLAT_END+word);
+        }
     }
 
     private class ReceiveThread implements Runnable {
@@ -144,6 +163,7 @@ public class ClientFrame extends JFrame {
         for (String u : us) {
             model.addElement(u);
         }
+        model.addElement("所有人");
     }
 
     private void close() {

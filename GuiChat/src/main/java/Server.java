@@ -15,7 +15,8 @@ public class Server {
     public static final String HOST = "127.0.0.1";
     public static final String DISCONNECT_TOKEN = "disconnect";
     public static final String TRAN_USER_FLAG = "connect:";
-
+    public static final String CHAT_FLAT_START = "to:";
+    public static final String CHAT_FLAT_END = ":end";
     //private List<ServerThread> cs;
     private Map<String,ServerThread> cs;
 
@@ -65,9 +66,9 @@ public class Server {
             out = new PrintWriter(s.getOutputStream(), true);
             name = br.readLine();
             name += "[" + s.getInetAddress().getHostAddress() + "]";
-            send(name + "连接了");
 //            cs.add(this);
             cs.put(name, this);
+            send(name + "连接了");
             sendUser();
         }
 
@@ -99,6 +100,21 @@ public class Server {
             }
         }
 
+        private String getUsersByMsg(String msg){
+            String str = msg.substring(CHAT_FLAT_START.length(),msg.indexOf(CHAT_FLAT_END));
+            return str;
+        }
+
+        private String getMsg(String str){
+            return str.substring(str.indexOf(CHAT_FLAT_END)+CHAT_FLAT_END.length());
+        }
+
+        private void sendPrivateUsers(String us, String msg){
+            String [] users = us.split(",");
+            for (String u:users){
+                cs.get(u).out.println(name+":"+msg+"[私]");
+            }
+        }
         @Override
         public void run() {
             try {
@@ -110,8 +126,13 @@ public class Server {
                         close();
                         break;
                     }
-                    send(name + str);
-                    System.out.println(name+":"+str);
+                    String us = getUsersByMsg(str);
+                    String msg = getMsg(str);
+                    if (us.equals("all")){
+                        send(name + ":"+msg+"[群]");
+                    } else {
+                        sendPrivateUsers(us,msg);
+                    }
                 }
             } catch (SocketException e) {
                 System.out.println(name+ "非正常退出了");
