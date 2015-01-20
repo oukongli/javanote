@@ -19,5 +19,14 @@ public class TestRegex1 {
 
         System.out.println("H".matches("[A-Z&&[IJK]]"));
 
+
+        System.out.println("0557-5090041".matches("\\d{4}-\\d{7}"));
+
+        System.out.println("192.168.0.1".matches("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}"));
+
+        // ^在[]中和不在[]中不一样
+        System.out.println("helloword".matches("^h.*"));
+        // $ 表示以xx为结尾
+        System.out.println("1you9u".matches("^\\d.*u$"));
     }
 }
