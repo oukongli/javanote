@@ -1,0 +1,18 @@
+ File file = new File("test.txt");
+
+ PrintWriter pw = null;
+                 try {
+                             pw = new PrintWriter(file);
+            pw.println("123");
+            123@qq.com
+                    } catch (FileNotFoundException e) {
+            e.printStatest
+            test@153.com
+            test@test.cn jfkdj jkj
+            ckTrace();
+        } finally {
+            if (pw != null)
+                pw.close();
+        }
+ <a href="www.baidu.com">baidu</a>
+ <a href="www.123.com">123</a>
