@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<books>
+    <book id="1">
+        <title>Thinking in java</title>
+        <price>100</price>
+    </book>
+    <book id="2">
+        <title>Thinking in c++</title>
+        <price>100</price>
+    </book>
+</books>
