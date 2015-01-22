@@ -6,6 +6,9 @@
     </book>
     <book id="2">
         <title>Thinking in c++</title>
-        <price>100</price>
+        <price>150</price>
+        <tmp>
+            <test testAttr="10" />
+        </tmp>
     </book>
 </books>

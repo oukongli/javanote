@@ -3,8 +3,6 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import java.io.File;
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -26,11 +24,28 @@ public class Test1 {
         Element root = document.getRootElement();
         System.out.println(root.getName());
 
-        List<Element> eles = root.elements();
-        for (Element e : eles){
-            System.out.println(e.getName());
-            System.out.println(e.attributeValue("id"));
+//        List<Element> eles = root.elements();
+//        for (Element e : eles){
+//            System.out.println(e.getName());
+//            System.out.println(e.attributeValue("id"));
+//            System.out.println(e.elementText("title"));
+//        }
+
+        /**
+         * xpath的使用
+         */
+        //绝对路径
+        List<Element> list = root.selectNodes("/books/book");
+
+        for (Element e : list){
             System.out.println(e.elementText("title"));
         }
+
+        list = root.selectNodes("/books/book[price>120]");
+
+        for (Element e : list){
+            System.out.println(e.elementText("title"));
+        }
+        //
     }
 }
