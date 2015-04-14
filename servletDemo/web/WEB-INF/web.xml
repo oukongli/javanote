@@ -21,4 +21,16 @@
         <servlet-name>reg</servlet-name>
         <url-pattern>/reg</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>scope</servlet-name>
+        <servlet-class>shdev.oukongli.java.ScopeServlet</servlet-class>
+        <init-param>
+            <param-name>username</param-name>
+            <param-value>123456</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>scope</servlet-name>
+        <url-pattern>/scope</url-pattern>
+    </servlet-mapping>
 </web-app>
