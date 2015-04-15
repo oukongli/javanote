@@ -3,9 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <filter>
+        <filter-name>charEncodingFilter</filter-name>
+        <filter-class>com.shdev.oukongli.fileter.Filter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>charEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>ServletTest</servlet-name>
-        <servlet-class>shdev.oukongli.java.ServletTest</servlet-class>
+        <servlet-class>com.shdev.oukongli.ServletTest</servlet-class>
     </servlet>
     
     <servlet-mapping>
@@ -15,7 +27,7 @@
 
     <servlet>
         <servlet-name>reg</servlet-name>
-        <servlet-class>shdev.oukongli.java.RegServlet</servlet-class>
+        <servlet-class>com.shdev.oukongli.RegServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>reg</servlet-name>
@@ -23,7 +35,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>scope</servlet-name>
-        <servlet-class>shdev.oukongli.java.ScopeServlet</servlet-class>
+        <servlet-class>com.shdev.oukongli.ScopeServlet</servlet-class>
         <init-param>
             <param-name>username</param-name>
             <param-value>123456</param-value>
