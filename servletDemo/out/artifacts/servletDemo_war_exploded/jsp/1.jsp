@@ -11,6 +11,9 @@
     <title></title>
 </head>
 <body>
+    <%--<%@include file="/include/top.jsp" %>--%>
+    <jsp:include page="/include/top.jsp">
+    <hr/>
     <form>
         请输入数字:<input type="text" name="number"/>
         <input type="submit">
