@@ -13,7 +13,7 @@ public class TestJDBC2 {
         Connection con = null;
         PreparedStatement ps = null;
 
-        String url = "jdbc:mysql://localhost:3306/shdev_oukongli_test";
+        String url = "jdbc:mysql://localhost:3306/shdev_shop";
         String user = "root";
         String password = "";
         try {

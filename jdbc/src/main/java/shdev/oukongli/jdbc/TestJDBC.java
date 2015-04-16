@@ -1,7 +1,5 @@
 package shdev.oukongli.jdbc;
 
-import jdk.nashorn.internal.objects.NativeUint16Array;
-
 import java.sql.*;
 
 /**
