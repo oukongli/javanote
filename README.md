@@ -8,5 +8,7 @@ java专题学习中的demo
 6. 正则表达式TestReg  
 7. zip  
 8. springmvc  
-9. 工具
+9. 工具  
+10. servlet  
+11.  观察者模式  
 
