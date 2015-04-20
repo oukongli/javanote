@@ -1,3 +1,4 @@
+<%@ page import="com.shdev.oukongli.util.ValidateUtil" %>
 <%--
   Created by IntelliJ IDEA.
   User: ou_kongli
@@ -11,7 +12,9 @@
     <title></title>
 </head>
 <body>
-    <form action="add.jsp" method="post">
+<jsp:include page="incl.jsp" />
+<%=request.getAttribute("error")%>
+<form action="add.jsp" method="post">
           <table align="center" width="500" border="1">
                 <tr>
                   <td>username</td>
@@ -21,9 +24,9 @@
                 </tr>
 
                   <tr>
-                      <td><input type="text" name="username"/></td>
-                      <td><input type="password" name="password"/></td>
-                      <td><input type="text" name="nickname"/></td>
+                      <td><input type="text" name="username"/><%=ValidateUtil.showError(request, "username")%></td>
+                      <td><input type="password" name="password"/><%=ValidateUtil.showError(request, "password")%></td>
+                      <td><input type="text" name="nickname"/><%=ValidateUtil.showError(request, "nickname")%></td>
                       <td><input type="submit" value="submit"/></td>
                   </tr>
 

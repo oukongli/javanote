@@ -28,7 +28,7 @@ public class UserDaoImpl implements IUserDao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 if (rs.getInt(1) > 0) {
-                    throw new ShopException("ÓÃ»§ÒÑ´æÔÚ");
+                    throw new ShopException("ç”¨æˆ·å·²å­˜åœ¨");
                 }
             }
             sql = "INSERT INTO t_user VALUES (null, ?, ?, ?)";
@@ -160,10 +160,10 @@ public class UserDaoImpl implements IUserDao {
                 user.setPassword(rs.getString("password"));
             }
             if (user == null) {
-                throw new ShopException("ÓÃ»§Ãû²»´æÔÚ");
+                throw new ShopException("ç”¨æˆ·ä¸å­˜åœ¨");
             }
             if (!user.getPassword().equals(password)) {
-                throw new ShopException("ÃÜÂë´íÎó");
+                throw new ShopException("å¯†ç ä¸æ­£ç¡®");
             }
         } catch (SQLException e) {
             e.printStackTrace();
