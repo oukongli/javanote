@@ -36,7 +36,7 @@
               <td><%=user.getUsername()%></td>
               <td><%=user.getPassword()%></td>
               <td><%=user.getNickname()%></td>
-              <td><a href="">delete</a>&nbsp;<a href="">update</a></td>
+              <td><a href="delete.jsp?id=<%=user.getId()%>">delete</a>&nbsp;<a href="update.jsp?id=<%=user.getId()%>">update</a></td>
             </tr>
         <%
             }

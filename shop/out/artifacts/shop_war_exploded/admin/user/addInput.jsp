@@ -24,7 +24,7 @@
                 </tr>
 
                   <tr>
-                      <td><input type="text" name="username"/><%=ValidateUtil.showError(request, "username")%></td>
+                      <td><input type="text" name="username" value="<%=request.getParameter("username")%>"/><%=ValidateUtil.showError(request, "username")%></td>
                       <td><input type="password" name="password"/><%=ValidateUtil.showError(request, "password")%></td>
                       <td><input type="text" name="nickname"/><%=ValidateUtil.showError(request, "nickname")%></td>
                       <td><input type="submit" value="submit"/></td>
