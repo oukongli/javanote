@@ -17,10 +17,20 @@
 <body>
 <jsp:include page="incl.jsp" />
     <%
+      String con = request.getParameter("con");
       IUserDao userDao = DAOFactory.getUserDao();
-      List<User> users = userDao.list();
+      List<User> users = userDao.list(con);
     %>
     <table align="center" border="1" width="800">
+        <tr>
+            <td colspan="5">
+                <form action="list.jsp">
+                    请输入用户名或者昵称:
+                    <input type="text" name="con" value="<%=con==null?"":con%>"/>
+                    <input type="submit" value="查询"/>
+                </form>
+            </td>
+        </tr>
         <tr>
           <td>用户标识</td>
           <td>用户名</td>

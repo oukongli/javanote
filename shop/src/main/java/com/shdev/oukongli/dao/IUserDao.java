@@ -12,6 +12,6 @@ public interface IUserDao {
     public void delete(int id);
     public void update(User user);
     public User load(int id);
-    public List<User> list();
+    public List<User> list(String conf);
     public User login(String username, String password);
 }

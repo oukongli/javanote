@@ -112,7 +112,7 @@ public class UserDaoImpl implements IUserDao {
         return user;
     }
 
-    public List<User> list() {
+    public List<User> list(String condition) {
         Connection con = DBUtil.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -121,7 +121,15 @@ public class UserDaoImpl implements IUserDao {
         try {
             con = DBUtil.getConnection();
             String sql = "select * from t_user";
-            ps = con.prepareStatement(sql);
+            if (condition == null || condition.equals("")) {
+                ps = con.prepareStatement(sql);
+            } else {
+                sql += " where username like ? or nickname like ?";
+                ps = con.prepareStatement(sql);
+                ps.setString(1, "%" + condition + "%");
+                ps.setString(2, "%" + condition + "%");
+            }
+
             rs = ps.executeQuery();
             while (rs.next()) {
                 user = new User();
