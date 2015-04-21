@@ -172,6 +172,6 @@ public class UserDaoImpl implements IUserDao {
             DBUtil.close(ps);
             DBUtil.close(con);
         }
-        return null;
+        return user;
     }
 }
