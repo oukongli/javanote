@@ -1,5 +1,6 @@
 package com.shdev.oukongli.dao;
 
+import com.shdev.oukongli.model.Pager;
 import com.shdev.oukongli.model.ShopException;
 import com.shdev.oukongli.model.User;
 import com.shdev.oukongli.util.DBUtil;
@@ -112,22 +113,34 @@ public class UserDaoImpl implements IUserDao {
         return user;
     }
 
-    public List<User> list(String condition) {
+    public Pager<User> list(String condition, int pageSize, int pageIndex) {
         Connection con = DBUtil.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<User> users = new ArrayList<User>();
+        Pager<User> userPager = new Pager<User>();
         User user = null;
+        int totalRecord = 0;
         try {
             con = DBUtil.getConnection();
             String sql = "select * from t_user";
+            String sqlCount = "select count(*) from t_user";
+            if (pageIndex < 1)
+                pageIndex = 1;
+            int startIndex = (pageIndex - 1) * pageSize;
             if (condition == null || condition.equals("")) {
+                sql += " limit ?,?";
                 ps = con.prepareStatement(sql);
+                ps.setInt(1, startIndex);
+                ps.setInt(2, pageSize);
             } else {
-                sql += " where username like ? or nickname like ?";
+                sql += " where username like ? or nickname like ? limit ?,?";
+                sqlCount += " where username like \'%" + condition + "%\' or nickname like \'%" + condition + "%\'";
                 ps = con.prepareStatement(sql);
                 ps.setString(1, "%" + condition + "%");
                 ps.setString(2, "%" + condition + "%");
+                ps.setInt(3, startIndex);
+                ps.setInt(4, pageSize);
             }
 
             rs = ps.executeQuery();
@@ -139,6 +152,12 @@ public class UserDaoImpl implements IUserDao {
                 user.setPassword(rs.getString("password"));
                 users.add(user);
             }
+
+            ps = con.prepareStatement(sqlCount);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                totalRecord = rs.getInt(1);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -146,7 +165,11 @@ public class UserDaoImpl implements IUserDao {
             DBUtil.close(ps);
             DBUtil.close(con);
         }
-        return users;
+        userPager.setDatas(users);
+        userPager.setTotalRecord(totalRecord);
+        userPager.setPageIndex(pageIndex);
+        userPager.setPageSize(pageSize);
+        return userPager;
     }
 
     public User login(String username, String password) {

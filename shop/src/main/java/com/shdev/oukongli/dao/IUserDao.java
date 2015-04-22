@@ -1,5 +1,6 @@
 package com.shdev.oukongli.dao;
 
+import com.shdev.oukongli.model.Pager;
 import com.shdev.oukongli.model.User;
 
 import java.util.List;
@@ -12,6 +13,6 @@ public interface IUserDao {
     public void delete(int id);
     public void update(User user);
     public User load(int id);
-    public List<User> list(String conf);
+    public Pager<User> list(String conf, int pageSize, int pageIndex);
     public User login(String username, String password);
 }
