@@ -67,32 +67,40 @@
     %>
     <tr>
         <td colspan="5">
-            共有<%=userPager.getTotalRecord()%>记录,
-            当前是第<%=userPager.getPageIndex()%>页,
-            每页显示<%=userPager.getPageSize()%>条.
+            <jsp:include page="/inc/pager.jsp">
+                <jsp:param name="items" value="<%=userPager.getTotalRecord()%>"/>
+                <jsp:param name="params" value="con"/>
+            </jsp:include>
         </td>
     </tr>
-    <tr>
-        <td colspan="5">
-            <a href="list.jsp?pageIndex=<%=pageIndex-1%><%=con==null?"":"&con="+con%>">上一页</a>
-            <%
-                int totalPage = userPager.getTotalPage();
-                for (int i = 1; i <= totalPage; i++) {
-                    if (i == pageIndex) {
-            %>
-            [<%=i%>]
-            <%
-                    continue;
-                }
+    <%--<tr>--%>
+        <%--<td colspan="5">--%>
+            <%--共有<%=userPager.getTotalRecord()%>记录,--%>
+            <%--当前是第<%=userPager.getPageIndex()%>页,--%>
+            <%--每页显示<%=userPager.getPageSize()%>条.--%>
+        <%--</td>--%>
+    <%--</tr>--%>
+    <%--<tr>--%>
+        <%--<td colspan="5">--%>
+            <%--<a href="list.jsp?pageIndex=<%=pageIndex-1%><%=con==null?"":"&con="+con%>">上一页</a>--%>
+            <%--<%--%>
+                <%--int totalPage = userPager.getTotalPage();--%>
+                <%--for (int i = 1; i <= totalPage; i++) {--%>
+                    <%--if (i == pageIndex) {--%>
+            <%--%>--%>
+            <%--[<%=i%>]--%>
+            <%--<%--%>
+                    <%--continue;--%>
+                <%--}--%>
 
-            %>
-            [<a href="list.jsp?pageIndex=<%=i%><%=con==null?"":"&con="+con%>"><%=i%></a>]
-            <%
-                }
-            %>
-            <a href="list.jsp?pageIndex=<%=pageIndex+1%><%=con==null?"":"&con="+con%>">下一页</a>
-        </td>
-    </tr>
+            <%--%>--%>
+            <%--[<a href="list.jsp?pageIndex=<%=i%><%=con==null?"":"&con="+con%>"><%=i%></a>]--%>
+            <%--<%--%>
+                <%--}--%>
+            <%--%>--%>
+            <%--<a href="list.jsp?pageIndex=<%=pageIndex+1%><%=con==null?"":"&con="+con%>">下一页</a>--%>
+        <%--</td>--%>
+    <%--</tr>--%>
 </table>
 </body>
 </html>

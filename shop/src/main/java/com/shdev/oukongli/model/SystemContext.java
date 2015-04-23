@@ -6,6 +6,19 @@ package com.shdev.oukongli.model;
 public class SystemContext {
     private static ThreadLocal<Integer> pageSize = new ThreadLocal<Integer>();
     private static ThreadLocal<Integer> pageIndex = new ThreadLocal<Integer>();
+    private static ThreadLocal<Integer> pageOffSet = new ThreadLocal<Integer>();
+
+    public static int getPageOffSet() {
+        return pageOffSet.get();
+    }
+
+    public static void setPageOffSet(int _pageOffSet) {
+        pageOffSet.set(_pageOffSet);
+    }
+
+    public static void removePageOffset() {
+        pageOffSet.remove();
+    }
 
     public static void setPageSize(int _pageSize) {
         pageSize.set(_pageSize);

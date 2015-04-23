@@ -2,6 +2,7 @@ package com.shdev.oukongli.dao;
 
 import com.shdev.oukongli.model.Pager;
 import com.shdev.oukongli.model.ShopException;
+import com.shdev.oukongli.model.SystemContext;
 import com.shdev.oukongli.model.User;
 import com.shdev.oukongli.util.DBUtil;
 
@@ -116,6 +117,8 @@ public class UserDaoImpl implements IUserDao {
     public Pager<User> list(String condition, int pageSize, int pageIndex) {
         Connection con = DBUtil.getConnection();
         PreparedStatement ps = null;
+        int pageOffSet = SystemContext.getPageOffSet();
+        pageSize = SystemContext.getPageSize();
         ResultSet rs = null;
         List<User> users = new ArrayList<User>();
         Pager<User> userPager = new Pager<User>();
@@ -125,13 +128,14 @@ public class UserDaoImpl implements IUserDao {
             con = DBUtil.getConnection();
             String sql = "select * from t_user";
             String sqlCount = "select count(*) from t_user";
-            if (pageIndex < 1)
-                pageIndex = 1;
-            int startIndex = (pageIndex - 1) * pageSize;
+//            if (pageIndex < 1)
+//                pageIndex = 1;
+//            int startIndex = (pageIndex - 1) * pageSize;
             if (condition == null || condition.equals("")) {
                 sql += " limit ?,?";
                 ps = con.prepareStatement(sql);
-                ps.setInt(1, startIndex);
+//                ps.setInt(1, startIndex);
+                ps.setInt(1, pageOffSet);
                 ps.setInt(2, pageSize);
             } else {
                 sql += " where username like ? or nickname like ? limit ?,?";
@@ -139,7 +143,8 @@ public class UserDaoImpl implements IUserDao {
                 ps = con.prepareStatement(sql);
                 ps.setString(1, "%" + condition + "%");
                 ps.setString(2, "%" + condition + "%");
-                ps.setInt(3, startIndex);
+//                ps.setInt(3, startIndex);
+                ps.setInt(3, pageOffSet);
                 ps.setInt(4, pageSize);
             }
 

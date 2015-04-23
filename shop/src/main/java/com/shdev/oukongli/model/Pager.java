@@ -11,6 +11,15 @@ public class Pager<E> {
     private int totalRecord;
     private int totalPage;
     private List<E> datas;
+    private int pageOffSet;
+
+    public int getPageOffSet() {
+        return pageOffSet;
+    }
+
+    public void setPageOffSet(int pageOffSet) {
+        this.pageOffSet = pageOffSet;
+    }
 
     public int getPageSize() {
         return pageSize;
