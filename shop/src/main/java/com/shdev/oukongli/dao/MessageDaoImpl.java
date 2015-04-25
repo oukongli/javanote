@@ -34,7 +34,7 @@ public class MessageDaoImpl implements IMessageDao {
             ps.setString(1, msg.getTitle());
             ps.setString(2, msg.getContent());
             ps.setTimestamp(3, new Timestamp(msg.getPostDate() == null ? new Date().getTime() : msg.getPostDate().getTime()));
-            ps.setInt(4, msg.getUserId());
+            ps.setInt(4, userId);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -93,7 +93,7 @@ public class MessageDaoImpl implements IMessageDao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 message = new Message();
-                message.setContent(rs.getString("title"));
+                message.setTitle(rs.getString("title"));
                 message.setContent(rs.getString("content"));
                 message.setId(rs.getInt("id"));
                 message.setPostDate(new Date(rs.getTimestamp("post_date").getTime()));
@@ -132,7 +132,7 @@ public class MessageDaoImpl implements IMessageDao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 message = new Message();
-                message.setContent(rs.getString("title"));
+                message.setTitle(rs.getString("title"));
                 message.setContent(rs.getString("content"));
                 message.setId(rs.getInt("id"));
                 message.setPostDate(new Date(rs.getTimestamp("post_date").getTime()));

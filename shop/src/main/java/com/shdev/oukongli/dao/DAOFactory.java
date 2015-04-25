@@ -7,4 +7,12 @@ public class DAOFactory {
    public static IUserDao getUserDao() {
        return new UserDaoImpl();
    }
+
+    public static IMessageDao getMessageDao() {
+        return new MessageDaoImpl();
+    }
+
+    public static ICommentDao getCommentDao() {
+        return new CommentDaoImpl();
+    }
 }

@@ -11,7 +11,14 @@
   User userLogin = (User) session.getAttribute("loginUser");
 %>
 <div style="text-align: right;border-bottom: 1px solid #000">
-    欢迎[<%=userLogin.getNickname()%>]使用我们的系统&nbsp;
+<%
+    if (userLogin != null) {
+%>
+  欢迎[<%=userLogin.getNickname()%>]使用我们的系统&nbsp;
   <a href="<%=request.getContextPath()%>/admin/user/list.jsp">管理信息</a>&nbsp;
   <a href="<%=request.getContextPath()%>/logout.jsp">exit</a>
+<%
+    }
+%>
+  <a href="<%=request.getContextPath()%>/msg/list.jsp">留言管理</a>
 </div>

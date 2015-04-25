@@ -33,7 +33,7 @@ public class UserDaoImpl implements IUserDao {
                     throw new ShopException("用户已存在");
                 }
             }
-            sql = "INSERT INTO t_user VALUES (null, ?, ?, ?)";
+            sql = "INSERT INTO t_user(id, username, password, nickname)  VALUES (null, ?, ?, ?)";
             ps = con.prepareStatement(sql);
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());

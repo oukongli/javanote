@@ -11,6 +11,7 @@
     <title></title>
 </head>
 <body>
+<jsp:include page="/inc/inc.jsp"></jsp:include>
 <h2 align="center">用户登录</h2><hr/>
 <form action="login.jsp" method="post">
     用户名称：<input type="text" name="username"/><br/>
