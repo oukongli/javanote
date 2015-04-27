@@ -33,7 +33,7 @@
         for (Message message : pagers.getDatas()) {
       %>
       <tr>
-            <td><%=message.getTitle()%></td>
+            <td><a href="show.jsp?id=<%=message.getId()%>"><%=message.getTitle()%></a> </td>
             <td><%=MsgUtil.formatDate(message.getPostDate())%></td>
             <td><%=message.getUserId()%></td>
             <td>1111111111</td>
