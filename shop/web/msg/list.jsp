@@ -2,6 +2,7 @@
 <%@ page import="com.shdev.oukongli.dao.DAOFactory" %>
 <%@ page import="com.shdev.oukongli.model.Pager" %>
 <%@ page import="com.shdev.oukongli.model.Message" %>
+<%@ page import="com.shdev.oukongli.util.MsgUtil" %>
 <%--
   Created by IntelliJ IDEA.
   User: ou_kongli
@@ -33,7 +34,7 @@
       %>
       <tr>
             <td><%=message.getTitle()%></td>
-            <td><%=message.getPostDate()%></td>
+            <td><%=MsgUtil.formatDate(message.getPostDate())%></td>
             <td><%=message.getUserId()%></td>
             <td>1111111111</td>
       </tr>
