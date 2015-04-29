@@ -9,6 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+  <script src="<%=request.getContextPath()%>/resource/ckeditor/ckeditor.js"></script>
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/ckeditor/samples/sample.css">
     <title></title>
 </head>
 <body>
@@ -27,7 +29,7 @@
     </tr>
     <tr>
       <td colspan="2">
-        <textarea rows="20" cols="100" name="content"></textarea>
+        <textarea class="ckeditor" rows="20" cols="100" name="content"></textarea>
       </td>
     </tr>
     <tr>
@@ -40,3 +42,7 @@
 </form>
 </body>
 </html>
+
+<script>
+CKEDITOR.replace("content");
+</script>

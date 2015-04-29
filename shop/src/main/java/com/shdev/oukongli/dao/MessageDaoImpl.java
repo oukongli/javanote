@@ -53,7 +53,7 @@ public class MessageDaoImpl implements IMessageDao {
             ps = con.prepareStatement(sql);
             ps.setString(1, msg.getTitle());
             ps.setString(2, msg.getContent());
-            ps.setInt(3, msg.getUserId());
+            ps.setInt(3, msg.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

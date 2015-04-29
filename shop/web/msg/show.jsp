@@ -31,19 +31,18 @@
     <tr>
         <td>发表日期：<%=MsgUtil.formatDate(message.getPostDate())%>&nbsp;&nbsp;&nbsp;&nbsp;
             发表人：<%=message.getUserId()%>
+            <a href="delete.jsp?id=<%=id%>">delete</a>&nbsp;
+            <a href="updateInput.jsp?id=<%=id%>">update</a>
         </td>
     </tr>
     <tr>
         <td>
-            <textarea class="ckeditor" name="editortest" id="editortest" rows="10" cols="100">
+            <%--<textarea class="ckeditor" name="editortest" id="editortest" rows="10" cols="100">--%>
                 <%=message.getContent()%>
-            </textarea>
+            <%--</textarea>--%>
 
         </td>
     </tr>
 </table>
-<script>
-    CKEDITOR.replace('editortest');
-</script>
 </body>
 </html>

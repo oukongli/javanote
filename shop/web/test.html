@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+    <title>$web_title$</title>
+    <meta name="keywords" content="$web_keywords$"/>
+    <meta name="description" content="$web_description$"/>
+    <link href="/css/$web_theme$/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+    <script type="text/javascript" src="/js/Functions.js"></script>
+    <script type="text/javascript" src="/js/SmoothMenu.js"></script>
+    <SCRIPT type="text/javascript" src="/js/SlideImage.js"></SCRIPT>
+    <script type="text/javascript" src="/js/ScrollPic.js"></script>
+    <script type="text/javascript">
+        ddsmoothmenu.init({
+            mainmenuid: "templatemo_menu", //menu DIV id
+            orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+            classname: 'ddsmoothmenu', //class added to menu's outer DIV
+            //customtheme: ["#1c5a80", "#18374a"],
+            contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+        })
+    </script>
+
+</head>
+<body>
+<div id="templatemo_header_wrapper">
+    <div id="templatemo_header" hidden="hidden">
+        <div id="site_title">
+            <div class="logo">
+                <a href="/"><img src="/images/up_images/$web_image$" alt="$web_name$">
+                </a>
+            </div>
+        </div>
+        <div class='SiteSearch'>
+            <div class="SearchBar">
+                <form method="get" action="$search_FolderName$/index.asp">
+                    <input type="text" name="q" id="search-text" size="15"
+                           onBlur="if(this.value=='') this.value='请输入关键词';"
+                           onfocus="if(this.value=='请输入关键词') this.value='';" value="请输入关键词"/><input type="submit"
+                                                                                                    id="search-submit"
+                                                                                                    value=" "/>
+                </form>
+            </div>
+        </div>
+        <!-- end of templatemo_menu -->
+    </div>
+    <!-- END of header -->
+    <div class='clearfix'></div>
+    <div id="templatemo_menu" class="ddsmoothmenu">
+        $web_TopMenu$
+        <br style="clear: left"/>
+    </div>
+
+</div>
+
+<div id="templatemo_middle_wrapper">
+    <div id="FocusBG">
+        <div id="Focus">
+
+            <DIV id="top_ad">
+                <DIV id="top_ad_img">$web_TopIMGAD2$</DIV>
+                <UL id="top_ad_txt">
+                    $web_TopIMGAD2TXT$
+                </UL>
+            </DIV>
+
+            <div class="clearfix"></div>
+
+        </div>
+    </div>
+</div>
+<!-- END of slider -->
+
+<div id="templatemo_main_top"></div>
+<div id="templatemo_main">
+
+    <!--CommonBlock start-->
+    <div class="CommonBlock">
+        <!--right start-->
+        <div class="CommonRight">
+            <!--BlockBox start-->
+            <div class='BlockBox'>
+                <div class="topic">
+                    <div class="TopicTitle"><a href='$WebProductFolder$'>产品分类</a></div>
+                    <div class="TopicMore"><a href='$WebProductFolder$'><img src="images/more.png"></a></div>
+                </div>
+
+                <div class='RightNav'>
+                    <div class="ClassNav">
+                        <div class="NavTree">
+                            $Block_LeftClassList$
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" clearfix"></div>
+
+                <div class="clearfix"></div>
+            </div>
+            <!--BlockBox end-->
+
+
+        </div>
+        <!--right end-->
+
+        <div class="WidthTab2"></div>
+
+        <!--center start-->
+        <div class="CommonCenter">
+
+            <!--BlockBox start-->
+            <div class='BlockBox'>
+                <div class="topic">
+                    <div class="TopicTitle"><a href="$WebAboutFolder$">$WebAboutName$</a></div>
+                    <div class="TopicMore"><a href='$WebAboutFolder$'><img src="/images/more.png"></a></div>
+                </div>
+                <div class=" clearfix"></div>
+                <div class='LeftImg'><a href='$WebAboutFolder$' target='_blank'><img
+                        src='/images/up_images/$WebAboutImage$' width='214' height='175' alt='$WebAboutName$'></a></div>
+                <div class='RightTxt ColorLink'>$WebAboutContent$...<a href='$WebAboutFolder$' target='_blank'>详细>></a>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+            <!--BlockBox end-->
+            <!--BlockBox start-->
+            <div class='BlockBox'>
+                <div class="topic">
+                    <div class="TopicTitle"><a href="$WebCaseFolder$">$WebCaseName$</a></div>
+                    <div class="TopicMore"><a href='$WebCaseFolder$'><img src="/images/more.png"></a></div>
+                </div>
+                <div class=" clearfix"></div>
+                <div class='LeftImg'>$WebTopCaseList$</div>
+                <div class='RightTxt'>
+
+                    <ul class='UList'>
+                        $WebCaseList$
+                    </ul>
+
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+            <!--BlockBox end-->
+
+
+        </div>
+        <!--center end-->
+
+        <!--left start-->
+        <div class="CommonLeft">
+
+            <!--BlockBox start-->
+            $WebNewNewsList$
+            <!--BlockBox end-->
+
+
+        </div>
+        <!--left end-->
+
+
+        <div class="clearfix"></div>
+    </div>
+    <!--CommonBlock end-->
+
+    <div class="HeightTab clearfix"></div>
+    <!--ProductShow start-->
+    <div class="ProductShow">
+
+        <div class="topic">
+            <div class="TopicTitle"><a href='$WebProductFolder$'>$WebProductName$</a></div>
+            <div class="TopicMore"><a href='$WebProductFolder$'><img src="/images/more.png"></a></div>
+        </div>
+        <div class="clearfix"></div>
+
+
+        <DIV class="blk_29">
+            <DIV class="LeftBotton" id="LeftArr"></DIV>
+            <DIV class="Cont" id="ISL_Cont_1"><!-- 图片列表 begin -->
+                $WebProductList$
+                <!-- 图片列表 end --></DIV>
+
+            <DIV class="RightBotton" id="RightArr"></DIV>
+        </DIV>
+        <SCRIPT language=javascript type=text/javascript>
+            <!--//-->
+            <![CDATA[//><!--
+            var scrollPic_02 = new ScrollPic();
+            scrollPic_02.scrollContId = "ISL_Cont_1"; //内容容器ID
+            scrollPic_02.arrLeftId = "LeftArr";//左箭头ID
+            scrollPic_02.arrRightId = "RightArr"; //右箭头ID
+
+            scrollPic_02.frameWidth = 888;//显示框宽度
+            scrollPic_02.pageWidth = 888; //翻页宽度
+
+            scrollPic_02.speed = 3; //移动速度(单位毫秒，越小越快)
+            scrollPic_02.space = 50; //每次移动像素(单位px，越大越快)
+            scrollPic_02.autoPlay = true; //自动播放
+            scrollPic_02.autoPlayTime = 3; //自动播放间隔时间(秒)
+
+            scrollPic_02.initialize(); //初始化
+
+            //--><!
+            ]]>
+        </SCRIPT>
+
+
+        <div class="clearfix"></div>
+    </div>
+    <!--ProductShow end-->
+
+</div>
+<!-- END of main -->
+<div class="clearfix"></div>
+<!--links start-->
+<div class="MainBlock">
+    <div id="Links">
+        <span>友情链接</span>
+        $web_link$
+    </div>
+</div>
+<!--links end-->
+
+<div id="templatemo_footer_wrapper">
+    <div id="templatemo_footer">
+
+        <!-- Dark Footer -->
+        <div id="dark_footer_wrap">
+            <div id="dark_footer">
+                $web_BottomMenu$
+            </div>
+        </div>
+        <!-- // Dark Footer -->
+
+
+        <div class="col col_14 no_margin_right">
+            <h5>Search</h5>
+
+            <div class="SearchBar">
+                <form method="get" action="$search_FolderName$/index.asp">
+                    <input type="text" name="q" id="search-text" size="15"
+                           onBlur="if(this.value=='') this.value='请输入关键词';"
+                           onfocus="if(this.value=='请输入关键词') this.value='';" value="请输入关键词"/><input type="submit"
+                                                                                                    id="search-submit"
+                                                                                                    value=" "/>
+                </form>
+            </div>
+            <div class="cleaner h30"></div>
+            $web_BottomHTML$
+        </div>
+
+        <div class="cleaner"></div>
+    </div>
+</div>
+<!-- END of footer -->
+
+<script type="text/javascript" src="/js/ServiceCenter.js"></script>
+
+</body>
+</html>
+<!--
+Powered By HituxCMS ASP V2.1
+-->
