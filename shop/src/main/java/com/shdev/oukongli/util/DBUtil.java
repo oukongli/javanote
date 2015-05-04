@@ -1,15 +1,22 @@
 package com.shdev.oukongli.util;
 
 import java.sql.*;
+import java.util.Properties;
 
 /**
  * Created by ou_kongli on 2015/4/16.
  */
 public class DBUtil {
     public static Connection getConnection() {
-        String username = "root";
+        Properties properties = PropertiesUtil.getJdbcProp();
+
+        /*String username = "root";
         String password = "";
-        String url = "jdbc:mysql://127.0.0.1:3306/shdev_shop?characterEncoding=UTF-8";
+        String url = "jdbc:mysql://127.0.0.1:3306/shdev_shop?characterEncoding=UTF-8";*/
+
+        String username = properties.getProperty("username");
+        String password = properties.getProperty("password");
+        String url = properties.getProperty("url");
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
