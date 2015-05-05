@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oukongli.java.model.User">
+    <insert id="add" parameterType="com.oukongli.java.model.User">
+        INSERT INTO t_user (username, password, nickname, type)
+        VALUES (#{username}, #{password}, #{nickname}, #{type})
+    </insert>
+
+    <update id="update" parameterType="com.oukongli.java.model.User">
+        UPDATE t_user
+        SET password = #{password},nickname=#{nickname},type=#{type} WHERE id=#{id}
+    </update>
+</mapper>
