@@ -2,14 +2,34 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.oukongli.java.model.User">
+<!--<mapper namespace="com.oukongli.java.model.User">-->
+<mapper namespace="com.oukongli.java.mapper.UserMapper">
+
+    <resultMap id="user" type="com.oukongli.java.model.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="nickname" property="nickname"/>
+        <result column="type" property="type"/>
+    </resultMap>
+
     <insert id="add" parameterType="com.oukongli.java.model.User">
-        INSERT INTO t_user (username, password, nickname, type)
-        VALUES (#{username}, #{password}, #{nickname}, #{type})
+        INSERT INTO t_user (id, username, password, nickname, type)
+        VALUES (#{id}, #{username}, #{password}, #{nickname}, #{type})
     </insert>
 
     <update id="update" parameterType="com.oukongli.java.model.User">
         UPDATE t_user
         SET password = #{password},nickname=#{nickname},type=#{type} WHERE id=#{id}
     </update>
+
+    <update id="delete" parameterType="int">
+        DELETE FROM t_user
+        WHERE id = #{id}
+    </update>
+
+    <select id="load" parameterType="int" resultMap="user">
+        SELECT * FROM t_user
+        WHERE id=#{id}
+    </select>
 </mapper>

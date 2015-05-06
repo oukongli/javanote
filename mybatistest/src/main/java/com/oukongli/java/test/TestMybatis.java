@@ -14,14 +14,23 @@ import java.io.InputStream;
  */
 public class TestMybatis {
     public static void main(String[] args) throws IOException {
+        testAdd();
         testUpdate();
+        testDelete();
+        testLoad();
+    }
+
+    public static void testLoad() {
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+        User u = sqlSession.selectOne(User.class.getName() + ".load", 1);
+        System.out.println(1);
+        MybatisUtil.closeSession(sqlSession);
     }
 
     public static void testAdd() throws IOException {
-        InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
-        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession sqlSession = factory.openSession();
+        SqlSession sqlSession = getSqlSession();
         User u = new User();
+        u.setId(3);
         u.setNickname("nickname");
         u.setUsername("username");
         u.setType(1);
@@ -32,18 +41,36 @@ public class TestMybatis {
     }
 
     public static void testUpdate() throws IOException {
-        InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
-        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession sqlSession = factory.openSession();
+
+        SqlSession sqlSession = getSqlSession();
         User u = new User();
         u.setId(3);
         u.setNickname("nickname");
         u.setUsername("username");
         u.setType(1);
         u.setPassword("333333");
-        sqlSession.update("com.oukongli.java.model.User.update", u);
+        sqlSession.update(User.class.getName() + ".update", u);
         sqlSession.commit();
         sqlSession.close();
+    }
+
+    public static void testDelete() {
+        SqlSession sqlSession = getSqlSession();
+        sqlSession.update(User.class.getName() + ".delete", 3);
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+
+    private static SqlSession getSqlSession() {
+        InputStream inputStream = null;
+        try {
+            inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
+       return factory.openSession();
     }
 
 }
