@@ -17,7 +17,7 @@ public class DBUtil {
         String username = properties.getProperty("username");
         String password = properties.getProperty("password");
         String url = properties.getProperty("url");
-        String jdbcDrive = properties.getProperty("jdbc.driver");
+        String jdbcDrive = properties.getProperty("driver");
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");

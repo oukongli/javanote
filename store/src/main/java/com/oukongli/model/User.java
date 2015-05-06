@@ -9,7 +9,7 @@ public class User {
     private int id;
     private String username;
     private String password;
-    private String nickName;
+    private String nickname;
     private int type;
     private List<Address> addresses;
 
@@ -45,12 +45,12 @@ public class User {
         this.password = password;
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public int getType() {
