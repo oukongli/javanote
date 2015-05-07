@@ -35,13 +35,17 @@
 
     <select id="find" resultMap="user">
         SELECT * FROM t_user
-        WHERE username  like CONCAT('%', #{name},'%')
-        ORDER by id desc limit #{pageOffset},#{pageSize}
+        <if test="name != null">
+            WHERE username  like CONCAT('%', #{name},'%')
+        </if>
+        ORDER by id desc limit #{pageOffset}, #{pageSize}
     </select>
 
     <select id="findcount" resultType="int">
         SELECT count(*)
         FROM t_user
-        WHERE username like CONCAT('%', #{name},'%')
+        <if test="name != null">
+            WHERE username  like CONCAT('%', #{name},'%')
+        </if>
     </select>
 </mapper>

@@ -44,8 +44,8 @@ public class TestUserDao {
     @Test
     public void testFind() {
         SystemContext.setPageOffSet(0);
-        SystemContext.setPageSize(10);
-        Pager<User> ps = userDao.find("u");
+        SystemContext.setPageSize(100);
+        Pager<User> ps = userDao.find(null);
         System.out.println(ps.getDatas().size());
     }
 }
