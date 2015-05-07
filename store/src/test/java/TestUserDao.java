@@ -1,5 +1,7 @@
 import com.oukongli.dao.DAOFactory;
 import com.oukongli.dao.IUserDao;
+import com.oukongli.model.Pager;
+import com.oukongli.model.SystemContext;
 import com.oukongli.model.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,5 +39,13 @@ public class TestUserDao {
     @Test
     public void testDelete() {
         userDao.delete(7);
+    }
+
+    @Test
+    public void testFind() {
+        SystemContext.setPageOffSet(0);
+        SystemContext.setPageSize(10);
+        Pager<User> ps = userDao.find("u");
+        System.out.println(ps.getDatas().size());
     }
 }

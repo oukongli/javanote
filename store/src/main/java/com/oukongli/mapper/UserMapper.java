@@ -15,7 +15,9 @@ public interface UserMapper {
 
     void delete(int id);
 
-    List<User> find(String name);
+    List<User> find(@Param("name") String name, @Param("pageOffset") int pageOffset, @Param("pageSize") int pageSize);
 
     void update(@Param("user") User user);
+
+    int findcount(@Param("name") String name);
 }
