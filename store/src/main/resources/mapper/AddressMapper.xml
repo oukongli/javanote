@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oukongli.mapper.AddressMapper">
+    <resultMap id="address" type="Address">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="phone" property="phone" />
+        <result column="postcode" property="postcode" />
+
+        <!--不好-->
+        <!--<association property="user" column="user_id" javaType="User" select="com.oukongli.mapper.UserMapper.load"/>-->
+        
+        <association property="user" javaType="User">
+
+        </association>
+    </resultMap>
+
+    <insert id="add" parameterType="Address">
+        insert into t_address (name, phone, postcode, user_id)
+        values (#{name}, #{phone}, #{postcode}, #{user.id})
+    </insert>
+
+    <update id="update" parameterType="Address">
+        update t_address
+        SET
+        name=#{name}, phone=#{phone}, postcode=#{postcode} WHERE id=#{id}
+    </update>
+
+    <update id="delete" parameterType="int">
+        DELETE FROM t_address
+        WHERE id = #{id}
+    </update>
+
+    <select id="load" parameterType="int" resultMap="address">
+        select * from t_address
+        WHERE id = #{id}
+    </select>
+
+    <select id="find" parameterType="int" resultType="com.oukongli.model.Address">
+        select * from t_address
+        WHERE user_id = #{user_id}
+    </select>
+</mapper>

@@ -21,6 +21,6 @@
     </environments>
     <mappers>
         <mapper resource="mapper/UserMapper.xml"/>
-        <mapper class="com.oukongli.mapper.AddressMapper"/>
+        <mapper resource="mapper/AddressMapper.xml"/>
     </mappers>
 </configuration>
