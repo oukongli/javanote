@@ -3,6 +3,7 @@ import com.oukongli.dao.IUserDao;
 import com.oukongli.model.Pager;
 import com.oukongli.model.SystemContext;
 import com.oukongli.model.User;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -47,5 +48,11 @@ public class TestUserDao {
         SystemContext.setPageSize(100);
         Pager<User> ps = userDao.find(null);
         System.out.println(ps.getDatas().size());
+    }
+
+    @Test
+    public void testLoad() {
+        User u = userDao.load(1);
+        Assert.assertNotNull(u);
     }
 }

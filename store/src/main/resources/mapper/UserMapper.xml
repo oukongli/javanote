@@ -11,6 +11,13 @@
         <result column="password" property="password"/>
         <result column="nickname" property="nickname"/>
         <result column="type" property="type"/>
+
+        <collection property="addresses" ofType="Address">
+            <id column="a_id" property="id"/>
+            <result column="phone" property="phone"/>
+            <result column="postcode" property="postcode"/>
+            <result column="name" property="name"/>
+        </collection>
     </resultMap>
 
     <insert id="add" parameterType="com.oukongli.model.User">
@@ -29,12 +36,12 @@
     </update>
 
     <select id="load" parameterType="int" resultMap="user">
-        SELECT * FROM t_user
-        WHERE id=#{id}
+        SELECT *,t2.id as 'a_id' FROM t_user t1 LEFT JOIN t_address t2 on(t1.id=t2.user_id)
+        WHERE t1.id=#{id}
     </select>
 
     <select id="find" resultMap="user">
-        SELECT * FROM t_user
+        SELECT *,t2.id as 'a_id' FROM t_user t1 LEFT JOIN t_address t2 on(t1.id=t2.id)
         <if test="name != null">
             WHERE username  like CONCAT('%', #{name},'%')
         </if>
