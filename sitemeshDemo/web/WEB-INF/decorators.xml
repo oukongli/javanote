@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<decorators defaultdir="/WEB-INF/decorators">
+        <excludes>
+            <pattern>/exclude.jsp</pattern>
+            <pattern>/exclude/*</pattern>
+        </excludes>
+
+        <decorator name="basic" page="basic.jsp">
+            <pattern>/*</pattern>
+        </decorator>
+
+        <decorator name="main" page="main.jsp">
+            <pattern>/02.jsp</pattern>
+        </decorator>
+</decorators>
