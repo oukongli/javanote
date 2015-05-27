@@ -23,8 +23,7 @@ public class FileUploadServlet extends HttpServlet{
         doPost(request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost1(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         boolean isMutipart = ServletFileUpload.isMultipartContent(request);
         if (isMutipart) {
             ServletFileUpload upload = new ServletFileUpload();
@@ -59,6 +58,23 @@ public class FileUploadServlet extends HttpServlet{
                     fos.close();
                 }
             }
+        }
+    }
+
+    protected void doPost02(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, FileUploadException {
+        if (ServletFileUpload.isMultipartContent(req)) {
+            req = new MultipartRequestWrapper(req);
+            System.out.println(req.getParameter("username"));
+            System.out.println(req.getParameter("photo"));
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            doPost02(req, resp);
+        } catch (FileUploadException e) {
+            e.printStackTrace();
         }
     }
 }
