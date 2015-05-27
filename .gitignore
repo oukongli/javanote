@@ -5,3 +5,5 @@ net/out/
 .idea/
 *.class
 shop/out/
+*/out/
+fileUpload/out/
