@@ -23,7 +23,7 @@ public class TestHibernateStatus {
             user.setPassword("12345");
             user.setBorn(new Date());
             //以上是Transient，未被session管理，且db中没有
-            //save之后，被session管理，且db中存在，此时是Persistent状态
+            //save之后，被session管理，且db中存在，此时是状态
             session.save(user);
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -131,6 +131,106 @@ public class TestHibernateStatus {
             User u = new User();
             u.setId(1);
             session.save(u);//save会执行插入，指定id无用
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (session != null) session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    @Test
+    public void testDetach2() {
+        Session session = null;
+
+        try {
+            session = HibernateUtil.getSession();
+            session.beginTransaction();
+            User u = new User();
+            u.setId(10);  //存在
+            session.update(u);
+            u.setNickname("10");
+            u.setPassword("10");
+            session.update(u);//一条sql
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (session != null) session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    @Test
+    public void testDetach3() {
+        Session session = null;
+
+        try {
+            session = HibernateUtil.getSession();
+            session.beginTransaction();
+            User u = new User();
+            u.setId(10);  //存在
+            session.update(u);
+            u.setNickname("10");
+            u.setPassword("10");
+
+            u.setId(100);//报错
+            session.update(u);//一条sql
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (session != null) session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    @Test
+    public void testDetach4() {
+        Session session = null;
+
+        try {
+            session = HibernateUtil.getSession();
+            session.beginTransaction();
+            User u = new User();
+            u.setId(10);  //存在
+            session.delete(u);//u变成transient
+
+            u.setPassword("");
+            session.update(u);//报错
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (session != null) session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    @Test
+    public void testDetach5() {
+        Session session = null;
+
+        try {
+            session = HibernateUtil.getSession();
+            session.beginTransaction();
+            User user1 = (User)session.load(User.class, 10);//user1  Persistent
+            System.out.println(user1.getNickname());
+            User user2 = new User();
+            user2.setId(10); //user2 Transient
+            //报错
+            session.saveOrUpdate(user2);  //报错，session中已有2个相同id, 此时用session.merge(user2);
+
+
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
