@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="model.Book" table="t_book">
+        <id name="id">
+            <!--<generator class="assigned"/> &lt;!&ndash;表示不会自动生成id&ndash;&gt;-->
+            <generator class="uuid"/> <!--自动生成字符串,此时id必须为String-->
+        </id>
+        <property name="name"/>
+        <property name="price"/>
+
+    </class>
+</hibernate-mapping>
