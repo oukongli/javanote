@@ -9,9 +9,8 @@
         </id>
         <property name="title"/>
         <property name="content"/>
-        <property name="comments"/>
 
-        <set name="comments">
+        <set name="comments" lazy="extra">
             <key column="mid"></key>
             <one-to-many class="model.Comment"/>
         </set>
