@@ -14,6 +14,10 @@
 
         <mapping resource="mapper/user.hbm.xml"/>
         <mapping resource="mapper/book.hbm.xml"/>
+        <mapping resource="mapper/student.hbm.xml"/>
+        <mapping resource="mapper/classroom.hbm.xml"/>
+        <mapping resource="mapper/comment.hbm.xml"/>
+        <mapping resource="mapper/message.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>
