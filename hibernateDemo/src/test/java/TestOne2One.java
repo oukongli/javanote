@@ -120,7 +120,7 @@ public class TestOne2One {
 
             Person person = (Person) session.load(Person.class, 1);
             System.out.println(person.getName());
-            System.out.println(person.getIdCard().getNo());   //一条sql   最佳实践
+            System.out.println(person.getIdCard().getNo());   //一条sql
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -148,5 +148,5 @@ public class TestOne2One {
         }
     }
 
-
+    //最佳实践: 不要使用双向one2one
 }
