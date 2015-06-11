@@ -20,5 +20,11 @@
         <mapping resource="mapper/message.hbm.xml"/>
         <mapping resource="mapper/person.hbm.xml"/>
         <mapping resource="mapper/idcard.hbm.xml"/>
+        <mapping resource="mapper/admin.hbm.xml"/>
+        <mapping resource="mapper/role.hbm.xml"/>
+        <mapping resource="mapper/teacher.hbm.xml"/>
+        <mapping resource="mapper/course.hbm.xml"/>
+        <mapping resource="mapper/teacherCourse.hbm.xml"/>
+
     </session-factory>
 </hibernate-configuration>
