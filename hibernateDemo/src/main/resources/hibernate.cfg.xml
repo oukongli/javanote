@@ -18,6 +18,7 @@
         <mapping resource="mapper/classroom.hbm.xml"/>
         <mapping resource="mapper/comment.hbm.xml"/>
         <mapping resource="mapper/message.hbm.xml"/>
-
+        <mapping resource="mapper/person.hbm.xml"/>
+        <mapping resource="mapper/idcard.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
