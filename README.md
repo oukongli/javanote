@@ -15,3 +15,6 @@ java专题学习中的demo
 13. jstl & servlet (由servlet开始转向SpringMVC)   
 14. fileUpload & wrapper  
 15. Hibernate demo 
+16. design pattern 
+17. log4j demo 
+
