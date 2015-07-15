@@ -3,9 +3,12 @@ package com.shdev.oukongli.java.controller;
 import com.shdev.oukongli.java.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,4 +31,21 @@ public class UserController {
         modelMap.put("users", users);
         return "user/list";
     }
+
+    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
+    public String show(@PathVariable String username, ModelMap modelMap) {
+        modelMap.put("user", users.get(username));
+        return "user/show";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+        return "user/login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(@RequestParam(value = "name") String username, String password, ModelMap modelMap) {
+        return "redirect:/user/users";
+    }
+
 }
