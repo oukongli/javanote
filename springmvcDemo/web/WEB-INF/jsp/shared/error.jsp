@@ -9,6 +9,7 @@
 <html>
 <head>
     <title></title>
+  <link href="/resources/my.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <h1>error</h1>

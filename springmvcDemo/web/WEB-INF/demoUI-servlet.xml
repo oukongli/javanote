@@ -16,6 +16,10 @@
    <context:component-scan base-package="com.shdev.oukongli.java.controller"/>
    <mvc:annotation-driven/>
 
+
+    <!--<mvc:resources mapping="/resources/**" location="/resources/"/>-->
+    <mvc:default-servlet-handler/>
+
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="defaultErrorView" value="/shared/error" />
         <property name="exceptionMappings">
