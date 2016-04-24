@@ -1,5 +1,7 @@
 package com.shdev.demo.service;
 
+import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 
 /**
@@ -9,7 +11,9 @@ import javax.jws.WebService;
 //SEI Service Endpoint Interface
 @WebService
 public interface IMyService {
-    int add(int a, int b);
+    @WebResult(name = "addResult")
+    int add(@WebParam(name = "a") int a, @WebParam(name = "b") int b);
 
-    int minus(int a, int b);
+    @WebResult(name = "minusResult")
+    int minus(@WebParam(name = "a") int a, @WebParam(name = "b") int b);
 }
