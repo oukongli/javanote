@@ -1,0 +1,6 @@
+<user xmlns="http://www.example.org/01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.example.org/01">
+    <id>3</id>
+    <username>zs</username>
+    <born>2008-09-29T09:49:45</born>
+</user>
