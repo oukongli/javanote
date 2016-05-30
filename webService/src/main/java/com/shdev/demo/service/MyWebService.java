@@ -5,6 +5,7 @@ import javax.jws.WebService;
 /**
  * Created by ou_ko on 2016/4/21.
  */
+@SuppressWarnings("restriction")
 //SIB (Service implement Bean)
 @WebService(endpointInterface = "com.shdev.demo.service.IMyService")
 public class MyWebService implements IMyService {

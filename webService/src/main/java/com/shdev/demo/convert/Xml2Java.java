@@ -10,6 +10,7 @@ import java.io.StringReader;
 /**
  * Created by ou_ko on 2016/4/25.
  */
+@SuppressWarnings("restriction")
 public class Xml2Java implements Convert {
     public void convert() {
         String str = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><student><classroom><grade>1</grade><id>classroom 1</id><name>classroom 1</name></classroom><id>1</id><name>test</name></student>";

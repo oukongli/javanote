@@ -8,6 +8,7 @@ import java.net.URL;
 /**
  * Created by ou_ko on 2016/4/21.
  */
+@SuppressWarnings("restriction")
 public class TestClient {
     public static void main(String[] args) throws MalformedURLException {
         URL url = new URL("http://localhost:8888/ns?wsdl");

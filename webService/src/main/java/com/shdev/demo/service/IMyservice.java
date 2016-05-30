@@ -8,6 +8,7 @@ import javax.jws.WebService;
  * Created by ou_ko on 2016/4/21.
  */
 
+@SuppressWarnings("restriction")
 //SEI Service Endpoint Interface
 @WebService
 public interface IMyService {

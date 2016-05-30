@@ -1,15 +1,16 @@
 package com.shdev.demo.convert;
 
-import com.shdev.demo.model.Classroom;
-import com.shdev.demo.model.Student;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import com.shdev.demo.model.Classroom;
+import com.shdev.demo.model.Student;
+
 /**
  * Created by ou_ko on 2016/4/25.
  */
+@SuppressWarnings("restriction")
 public class Java2Xml implements Convert {
     public void convert() {
         try {
