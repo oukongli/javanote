@@ -9,22 +9,20 @@ import org.springframework.stereotype.Component;
 
 
 /**
- * 
  * @author liang
- * @description  Topic消息监听器
- * 
+ * @description Topic消息监听器
  */
 @Component
-public class TopicReceiver1 implements MessageListener{
+public class TopicReceiver1 implements MessageListener {
 
 
-	@Override
-	public void onMessage(Message message) {
-		try {
-			System.out.println("TopicReceiver1接收到消息:"+((TextMessage)message).getText());
-		} catch (JMSException e) {
-			e.printStackTrace();
-		}
-	}
-	
+    @Override
+    public void onMessage(Message message) {
+        try {
+            System.out.println("TopicReceiver1接收到消息:" + ((TextMessage) message).getText());
+        } catch (JMSException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
