@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 public class MyDateUtils {
-    private static ThreadLocal<SimpleDateFormat> CURRENT_DATE_TIME_FORMAT = new ThreadLocal<SimpleDateFormat>() {
+    private static ThreadLocal<SimpleDateFormat> threadLocal = new ThreadLocal<SimpleDateFormat>() {
         @Override
         protected SimpleDateFormat initialValue() {
             return new SimpleDateFormat("yyyy/MM/dd");
@@ -42,12 +42,12 @@ public class MyDateUtils {
         try {
             return DateUtils.parseDate(date, DATE_PATTERNS);
         } catch (ParseException e) {
-            throw new IllegalArgumentException(String.format("Date format should be one of %s", Arrays.toString(DATE_PATTERNS)));
+            throw new IllegalArgumentException(String.format("Date format %1$s is not supported", date));
         }
     }
 
     public static void main(String[] args) {
         Date date = parseDate("20160602");
-        System.out.println(CURRENT_DATE_TIME_FORMAT.get().format(date));
+        System.out.println(threadLocal.get().format(date));
     }
 }
