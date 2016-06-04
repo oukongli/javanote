@@ -5,7 +5,6 @@ import org.apache.commons.lang3.time.DateUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 
 public class MyDateUtils {
@@ -46,8 +45,22 @@ public class MyDateUtils {
         }
     }
 
+    public static String convertDateFormat(String date, String target) {
+        if (StringUtils.isEmpty(date))
+            return null;
+        return convertDateFormat(parseDate(date), target);
+    }
+
+    public static String convertDateFormat(Date date, String target) {
+        if (date == null)
+            return null;
+        SimpleDateFormat dateFormat = new SimpleDateFormat(target);
+        return dateFormat.format(date);
+    }
+
     public static void main(String[] args) {
-        Date date = parseDate("20160602");
-        System.out.println(threadLocal.get().format(date));
+//        Date date = parseDate("20160602");
+//        System.out.println(threadLocal.get().format(date));
+        System.out.println(convertDateFormat(new Date(), CUSTOM_DATE_FORMAT_1));
     }
 }
