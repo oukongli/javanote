@@ -9,7 +9,7 @@ import service.UserService;
 public class TestUserDao {
     @Test
     public void test() {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10; i++) {
             new UserDao().add();
             new UserService().add();
         }
