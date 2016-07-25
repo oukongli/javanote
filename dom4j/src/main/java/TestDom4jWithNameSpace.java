@@ -57,7 +57,7 @@ public class TestDom4jWithNameSpace {
         InputStream is = null;
         BufferedReader br = null;
         URL url;
-        StringBuffer html = new StringBuffer();
+        StringBuilder html = new StringBuilder();
         try {
             url = new URL(currentUrl);
             URLConnection conn = url.openConnection();
