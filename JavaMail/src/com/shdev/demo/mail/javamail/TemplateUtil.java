@@ -1,4 +1,4 @@
-package com.shdev.demo.mail;
+package com.shdev.demo.mail.javamail;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;

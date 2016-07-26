@@ -1,4 +1,4 @@
-package com.shdev.demo.mail;
+package com.shdev.demo.mail.javamail;
 
 /**
  * Created by ou_ko on 2016/7/17.

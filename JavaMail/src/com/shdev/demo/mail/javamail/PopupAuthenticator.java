@@ -1,4 +1,4 @@
-package com.shdev.demo.mail;
+package com.shdev.demo.mail.javamail;
 
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;

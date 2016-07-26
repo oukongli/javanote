@@ -1,4 +1,4 @@
-package com.shdev.demo.mail;
+package com.shdev.demo.mail.javamail;
 
 import java.io.BufferedReader;
 import java.io.File;
