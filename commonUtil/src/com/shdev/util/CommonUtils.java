@@ -47,16 +47,16 @@ public final class CommonUtils {
             return newObject(type);
         }
         try {
-            Class[] argsClasses = new Class[args.length];
-            for (int i = 0; i < args.length; ++i) {
+            Class<?>[] argsClasses = new Class<?>[args.length];
+            for (int i = 0; i < args.length; i++) {
                 if (args[i] == null) {
                     argsClasses[i] = null;
                 } else {
                     argsClasses[i] = args[i].getClass();
                 }
             }
-            Constructor ctor = type.getDeclaredConstructor(argsClasses);
-            return (T) ctor.newInstance(args);
+            Constructor<T> ctor = type.getDeclaredConstructor(argsClasses);
+            return ctor.newInstance(args);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
