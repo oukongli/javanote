@@ -1,21 +1,22 @@
 package com.shdev.demo.controller;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
 import com.shdev.demo.model.User;
 import com.shdev.demo.service.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 
 @Controller
 @RequestMapping("/users")
 public class UserController {
+    private Logger logger = Logger.getLogger(UserController.class);
 
     @Resource
     private UserService userService;
@@ -24,6 +25,7 @@ public class UserController {
     public
     @ResponseBody
     List<User> getUserList() {
+        logger.info("get user list");
         return userService.getAllUsers();
     }
 
