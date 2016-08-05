@@ -10,21 +10,31 @@
                         http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
                         http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
-    <context:component-scan base-package="com.shdev.demo.rest" />
+    <bean id="myTask" class="com.shdev.demo.service.impl.DynamicJobImpl"/>
 
-    <jaxrs:server id="exampleCxfServer" address="/">
-        <jaxrs:serviceBeans>
-            <ref bean="exampleService"/>
-        </jaxrs:serviceBeans>
-        <jaxrs:extensionMappings>
-            <entry key="json" value="application/json"/>
-        </jaxrs:extensionMappings>
-        <jaxrs:features>
-            <cxf:logging/>
-        </jaxrs:features>
-        <jaxrs:providers>
-            <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider" />
-        </jaxrs:providers>
-    </jaxrs:server>
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="group" value="job_work"/>
+        <property name="name" value="job_work_name"/>
+        <!--false表示等上一个任务执行完后再开启新的任务-->
+        <property name="concurrent" value="false"/>
+        <property name="targetObject" ref="myTask"/>
+        <property name="targetMethod" value="execute"/>
+    </bean>
 
+
+    <bean id="myTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="name" value="work_default_name"/>
+        <property name="group" value="work_default"/>
+        <property name="jobDetail" ref="jobDetail"/>
+        <property name="cronExpression" value="0/10 * * * * ?"/>
+    </bean>
+
+    <!-- The quartz scheduler configuration -->
+    <bean id="scheduler" lazy-init="false" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="myTrigger"/>
+            </list>
+        </property>
+    </bean>
 </beans>
