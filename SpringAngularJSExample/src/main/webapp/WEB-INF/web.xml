@@ -42,8 +42,25 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
+    <servlet>
+        <servlet-name>rest</servlet-name>
+        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:cxf-rest.xml</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>springMVC</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>rest</servlet-name>
+        <url-pattern>/service/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>
