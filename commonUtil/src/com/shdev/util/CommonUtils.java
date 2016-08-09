@@ -1,6 +1,7 @@
 package com.shdev.util;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.util.*;
 
 public final class CommonUtils {
@@ -95,5 +96,29 @@ public final class CommonUtils {
             resultMap.get(key).add(item);
         }
         return resultMap;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <V> V getFieldValue(Object object, String fieldName) {
+        if (object == null || fieldName == null || fieldName.trim().length() == 0) {
+            return null;
+        }
+        if (object instanceof Map) {
+            return (V) ((Map<?, ?>) object).get(fieldName);
+        }
+        Class<?> clazz = object.getClass();
+        while (clazz != null) {
+            try {
+                for (Field field : clazz.getDeclaredFields()) {
+                    if (!field.getName().equals(fieldName)) continue;
+                    field.setAccessible(true);
+                    return (V) field.get(object);
+                }
+                clazz = clazz.getSuperclass();
+            } catch (Exception e) {
+                throw new RuntimeException("Error occurred during getting field value.", e);
+            }
+        }
+        return null;
     }
 }
