@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<testObject>
+    <age>11</age>
+    <home>
+        <anhui>home2</anhui>
+        <shanghai>home1</shanghai>
+    </home>
+    <name>111</name>
+</testObject>
