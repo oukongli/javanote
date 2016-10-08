@@ -41,7 +41,8 @@ public class NQueen {
     }
 
     public static void main(String[] args) {
-        System.out.println(new NQueen().nQueen(4));
-        System.out.println(new NQueen().nQueen(8));
+        for (int i = 2; i < 10; i++) {
+            System.out.println(new NQueen().nQueen(i));
+        }
     }
 }
