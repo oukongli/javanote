@@ -28,7 +28,7 @@ public class NQueenIteration {
     }
 
     private void backtrack() {
-        x[1] = -1;
+        x[0] = -1;
         int k = 0;
         while (k >= 0) {
             x[k] += 1;
