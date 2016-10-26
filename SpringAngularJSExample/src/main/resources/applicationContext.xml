@@ -18,18 +18,30 @@
     <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
     <import resource="classpath:cxf-rest.xml"/>
     <import resource="classpath:quartz-config.xml"/>
+    <import resource="classpath:dao-config.xml"/>
+    <import resource="classpath:service-config.xml"/>
 
     <!-- 自动扫描 -->
     <context:component-scan base-package="com.shdev.demo.dao"/>
     <context:component-scan base-package="com.shdev.demo.service"/>
 
     <!-- 配置数据源 -->
-    <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://192.168.3.9:3306/demo?characterEncoding=utf-8"/>
-        <property name="username" value="root"/>
-        <property name="password" value="#Bugsfor$"/>
+    <!--<bean id="dataSource"-->
+    <!--class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+    <!--<property name="driverClassName" value="com.mysql.jdbc.Driver"/>-->
+    <!--<property name="url" value="jdbc:mysql://192.168.3.9:3306/demo?characterEncoding=utf-8"/>-->
+    <!--<property name="username" value="root"/>-->
+    <!--<property name="password" value="#Bugsfor$"/>-->
+    <!--</bean>-->
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@192.168.31.142:49161:XE"/>
+        <property name="username" value="system"/>
+        <property name="password" value="oracle"/>
+        <property name="maxActive" value="16"/>
+        <property name="maxIdle" value="5"/>
+        <property name="maxWait" value="120000"/>
     </bean>
 
     <!-- 配置mybatis的sqlSessionFactory -->
@@ -41,21 +53,16 @@
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
 
-    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.shdev.demo.dao"/>
+        <property name="basePackage" value="com.shdev.demo.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
-    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
-    <bean id="transactionManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <!-- 配置事务通知属性 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
-        <!-- 定义事务传播属性 -->
         <tx:attributes>
             <tx:method name="insert*" propagation="REQUIRED"/>
             <tx:method name="update*" propagation="REQUIRED"/>
@@ -74,7 +81,6 @@
         </tx:attributes>
     </tx:advice>
 
-    <!-- 配置事务切面 -->
     <aop:config>
         <aop:pointcut id="serviceOperation" expression="execution(* com.shdev.demo.service.*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation"/>

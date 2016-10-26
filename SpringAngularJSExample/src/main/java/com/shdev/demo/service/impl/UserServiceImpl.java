@@ -1,23 +1,25 @@
 package com.shdev.demo.service.impl;
 
 
-import javax.annotation.Resource;
-
-import com.shdev.demo.dao.UserDao;
+import com.shdev.demo.dao.IUserDao;
 import com.shdev.demo.model.User;
 import com.shdev.demo.service.UserService;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Required;
 
 import java.util.List;
 
 
-@Service("userService")
 public class UserServiceImpl implements UserService {
+    private IUserDao userDao;
 
-    //public List<User> userList = getAllUsers();
+    public IUserDao getUserDao() {
+        return userDao;
+    }
 
-    @Resource
-    private UserDao userDao;
+    @Required
+    public void setUserDao(IUserDao userDao) {
+        this.userDao = userDao;
+    }
 
     public User login(User user) {
         return userDao.login(user);

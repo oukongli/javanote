@@ -15,7 +15,6 @@
     <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="group" value="job_work"/>
         <property name="name" value="job_work_name"/>
-        <!--false表示等上一个任务执行完后再开启新的任务-->
         <property name="concurrent" value="false"/>
         <property name="targetObject" ref="myTask"/>
         <property name="targetMethod" value="execute"/>

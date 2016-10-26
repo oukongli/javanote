@@ -1,12 +1,10 @@
-package com.shdev.demo.service;
-
+package com.shdev.demo.mapper;
 
 import com.shdev.demo.model.User;
 
 import java.util.List;
 
-public interface UserService {
-
+public interface UserMapper {
     User login(User user);
 
     User getUserById(int id);

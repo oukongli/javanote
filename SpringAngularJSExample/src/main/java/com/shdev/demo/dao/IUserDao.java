@@ -1,11 +1,11 @@
-package com.shdev.demo.service;
-
+package com.shdev.demo.dao;
 
 import com.shdev.demo.model.User;
 
 import java.util.List;
 
-public interface UserService {
+
+public interface IUserDao {
 
     User login(User user);
 
