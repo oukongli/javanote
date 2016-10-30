@@ -44,12 +44,9 @@
         <property name="maxWait" value="120000"/>
     </bean>
 
-    <!-- 配置mybatis的sqlSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!-- 自动扫描mappers.xml文件 ，要加上classpath:com/...-->
         <property name="mapperLocations" value="classpath:mappers/*.xml"/>
-        <!-- mybatis配置文件 -->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
 
