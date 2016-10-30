@@ -178,6 +178,40 @@
 <script src="/resources/bootstrap/js/bootstrap.js"></script>
 
 <script>
-    
+    #[[
+        $(document).ready(function () {
+        var $navbar = $("#bcmp-tool-nav-bar");
+        $navbar.find(".nav>li").click(function(evt) {
+            debugger;
+            evt.preventDefault();
+            var $this = $(this);
+            $this.siblings("li").removeClass("active");
+            $this.addClass("active");
+            if ($this.children("a:first").data("service-url") !== undefined) {
+                window.location.hash = $this.children("a:first").attr("href");
+            }
+        });
+
+        window.onhashchange = function () {
+            var currentHash = window.location.hash;
+            if (currentHash !== "#") {
+                var tabLink = $navbar.find("a[href='" + currentHash + "']");
+                if (!tabLink.parent("li").hasClass("active")) {
+                    tabLink.click();
+                }
+            }
+        };
+
+        if (window.location.hash !== "" && window.location.hash !== "#") {
+            $navbar.find("a").each(function () {
+                if ($(this).attr("href") === window.location.hash && !$(this).parent("li").hasClass("active"))
+                    $(this).click();
+            });
+        } else {
+            $navbar.find(".nav>li:first").find("a").click();
+        }
+    });
+
+    ]]#
 </script>
 
