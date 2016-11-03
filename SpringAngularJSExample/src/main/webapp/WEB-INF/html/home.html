@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/resources/bootstrap/css/font-awesome.css"/>
 </head>
 
-<body class="logo">
+<body class="logo" ng-app="bcmp_tool">
 <div class="content-container container">
     <div class="header row mt10 mb10">
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 fl mt10">
@@ -29,29 +29,27 @@
 
     <div class="m15">
         <div class="row">
-            <div class="span12">
-                <div class="hero-unit">
-                    <h3>
-                        表单项
-                    </h3>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                            Option one is this and that&mdash;be sure to include why it's great
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                            Option two can be something else and selecting it will deselect option one
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                            Option three is disabled
-                        </label>
-                    </div>
+            <div class="">
+                <h3>
+                    表单项
+                </h3>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                        Option one is this and that&mdash;be sure to include why it's great
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                        Option two can be something else and selecting it will deselect option one
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                        Option three is disabled
+                    </label>
                 </div>
             </div>
         </div>
@@ -176,9 +174,11 @@
 
 <script src="/resources/js/common/jquery-3.1.1.js"></script>
 <script src="/resources/bootstrap/js/bootstrap.js"></script>
+<script src="/resources/js/lib/angular/angular.js"></script>
+<script src="/resources/js/bcmp_tool.js"></script>
 
 <script>
-    #[[
+    /*#[[
         $(document).ready(function () {
         var $navbar = $("#bcmp-tool-nav-bar");
         $navbar.find(".nav>li").click(function(evt) {
@@ -212,6 +212,6 @@
         }
     });
 
-    ]]#
+    ]]#*/
 </script>
 

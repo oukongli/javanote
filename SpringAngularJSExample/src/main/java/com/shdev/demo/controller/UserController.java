@@ -22,9 +22,8 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/userlist.json")
-    public
     @ResponseBody
-    List<User> getUserList() {
+    public List<User> getUserList() {
         logger.info("get user list");
         return userService.getAllUsers();
     }
