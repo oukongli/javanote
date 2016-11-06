@@ -809,9 +809,9 @@ a [class^="icon-"], a [class*=" icon-"] {
     background-color: #EEEEEE;
     cursor: pointer;
 }
-.form-horizontal .control-label { float: left; width: 140px; padding-left: 10px; padding-right: 10px;}
+.form-horizontal .control-label { float: left; width: 240px; padding-left: 10px; padding-right: 10px;}
 .form-group input, .form-group textarea, .form-group .uneditable-input {
-    width: 220px;
+    width: 320px;
 }
 .row { margin-right: 0; }
 
