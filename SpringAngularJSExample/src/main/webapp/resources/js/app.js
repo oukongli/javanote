@@ -10,6 +10,5 @@ App.config(['$routeProvider', function ($routeProvider) {
         templateUrl: 'users/layout',
         controller: UserController
     });
-
     $routeProvider.otherwise({redirectTo: '/users'});
 }]);

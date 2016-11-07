@@ -16,7 +16,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/users")
 public class UserController {
-    private Logger logger = Logger.getLogger(UserController.class);
+    private static Logger logger = Logger.getLogger(UserController.class);
 
     @Resource
     private UserService userService;
