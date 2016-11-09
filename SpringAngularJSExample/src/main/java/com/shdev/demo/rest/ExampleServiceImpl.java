@@ -5,9 +5,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ou_ko on 2016/8/5.
- */
 @Service("exampleService")
 public class ExampleServiceImpl implements ExampleService {
     public ExampleModel get(String id) {
