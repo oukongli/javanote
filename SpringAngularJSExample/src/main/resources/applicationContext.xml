@@ -25,16 +25,16 @@
     <context:component-scan base-package="com.shdev.demo.dao"/>
     <context:component-scan base-package="com.shdev.demo.service"/>
 
-    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+    <bean id="mysqlDataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://192.168.31.142:3306/demo?characterEncoding=utf-8"/>
         <property name="username" value="root"/>
         <property name="password" value="#Bugsfor$"/>
-    </bean>-->
+    </bean>
 
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <bean id="oracleDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverClass}"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.user}"/>
@@ -42,6 +42,16 @@
         <property name="maxActive" value="${jdbc.maxActive}"/>
         <property name="maxIdle" value="${jdbc.maxIdle}"/>
         <property name="maxWait" value="${jdbc.maxWait}"/>
+    </bean>
+
+    <bean id="dataSource" class="com.shdev.demo.common.DynamicDataSource">
+        <property name="targetDataSources">
+            <map key-type="com.shdev.demo.common.DataSourceType">
+                <entry key="MYSQL" value-ref="mysqlDataSource"/>
+                <entry key="ORACLE" value-ref="oracleDataSource"/>
+            </map>
+        </property>
+        <property name="defaultTargetDataSource" ref="mysqlDataSource"/>
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

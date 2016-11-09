@@ -1,13 +1,14 @@
 package com.shdev.demo.controller;
 
+import com.shdev.demo.common.DataSourceType;
+import com.shdev.demo.common.DynamicDataSource;
+import com.shdev.demo.common.DynamicDataSourceHolder;
 import com.shdev.demo.model.User;
 import com.shdev.demo.service.UserService;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -23,7 +24,16 @@ public class UserController {
 
     @RequestMapping("/userlist.json")
     @ResponseBody
-    public List<User> getUserList() {
+    public List<User> getUserList(@RequestParam(value = "ywlsh", defaultValue = StringUtils.EMPTY) String ywlsh,
+                                  @RequestParam(defaultValue = StringUtils.EMPTY) String jylsh) {
+        if (ywlsh.equals("0"))
+            DynamicDataSourceHolder.setDataSourceType(null);
+        if (ywlsh.equals("1"))
+            DynamicDataSourceHolder.setDataSourceType(DataSourceType.typeOf("oracle"));
+        if (ywlsh.equals("2"))
+            DynamicDataSourceHolder.setDataSourceType(DataSourceType.typeOf("mysql"));
+        logger.info(ywlsh);
+        logger.info(jylsh);
         logger.info("get user list");
         return userService.getAllUsers();
     }
