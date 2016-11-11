@@ -1,8 +1,11 @@
 package com.shdev.demo.mail.javamail;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStreamReader;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -101,41 +104,59 @@ public class TestSendMail {
      */
     public static void sendMailWithAttachement() throws Exception {
         Properties props = System.getProperties();
-        props.put("mail.smtp.host", "smtp.126.com"); // 设置smtp的服务器地址是smtp.126.com
-        props.put("mail.smtp.auth", "true"); // 设置smtp服务器要身份验证。
+        props.put("mail.smtp.host", "smtp.163.com");
+        props.put("mail.smtp.auth", "true");
         PopupAuthenticator auth = new PopupAuthenticator();
         Session session = Session.getInstance(props, auth);
-        File filename = new File("D:\\testMail.txt");
+//        File filename = new File("D:\\testMail.txt");
 
         // 发送人地址
-        Address from = new InternetAddress(PopupAuthenticator.username,
-                PopupAuthenticator.password);
-        Address to = new InternetAddress("地址@qq.com");
+        Address from = new InternetAddress(PopupAuthenticator.username, PopupAuthenticator.password);
+//        Address to = new InternetAddress("ou_kongli@qq.com");
         // Define message
         MimeMessage message = new MimeMessage(session);
         message.setFrom(from);
-        message.addRecipient(Message.RecipientType.TO, to);
+//        message.addRecipient(Message.RecipientType.TO, to);
+        message.addRecipient(Message.RecipientType.TO, new InternetAddress("oukongli@gmail.com"));
+//        message.addRecipient(Message.RecipientType.TO, new InternetAddress("ou_kongli@outlook.com"));
         //message.addRecipient(Message.RecipientType.TO, new InternetAddress("第二个地址@qq.com"));
         message.setSubject("Hello 同学", "utf-8");
         // Create the message part
         BodyPart messageBodyPart = new MimeBodyPart();
         // Fill the message
         //messageBodyPart.setContent("我勒个去啊","text/html;charSet=utf-8");
-        messageBodyPart.setText("看到这封信，请不要惊讶！这是系统自动发送的邮件，请善误操作！");
+//        messageBodyPart.setText("看到这封信，请不要惊讶！这是系统自动发送的邮件，请善误操作！");
+//        messageBodyPart.setText(getMailBody());
+        messageBodyPart.setContent(getMailBody(), "text/html;charSet=utf-8");
+
         Multipart multipart = new MimeMultipart();
         multipart.addBodyPart(messageBodyPart);
         // Part two is attachment
-        messageBodyPart = new MimeBodyPart();
-        DataSource source = new FileDataSource(filename);
-        messageBodyPart.setDataHandler(new DataHandler(source));
-        messageBodyPart.setFileName("download.txt");
-        multipart.addBodyPart(messageBodyPart);
+//        messageBodyPart = new MimeBodyPart();
+//        DataSource source = new FileDataSource(filename);
+//        messageBodyPart.setDataHandler(new DataHandler(source));
+//        messageBodyPart.setFileName("download.txt");
+//        multipart.addBodyPart(messageBodyPart);
         // Put parts in message
         message.setContent(multipart);
         // Send the message
         Transport.send(message);
         System.out.println("成功！");
     }
+
+    public static String getMailBody() throws IOException, TemplateException {
+        Map<String, Object> root = new HashMap<>();
+        root.put("user", "Big Joe");
+        Product latest = new Product();
+        latest.setUrl("products/greenmouse.html");
+        latest.setName("green mouse");
+        root.put("latestProduct", latest);
+        Template temp = TemplateUtil.getFreeMarkerTemplate("template.ftl");
+        StringWriter writer = new StringWriter();
+        temp.process(root, writer);
+        return writer.toString();
+    }
+
 
     public static void recpMail() throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(
