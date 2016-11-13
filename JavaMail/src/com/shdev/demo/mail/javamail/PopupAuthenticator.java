@@ -8,7 +8,7 @@ import javax.mail.PasswordAuthentication;
  */
 public class PopupAuthenticator extends Authenticator {
     public static final String username = "ou_kongli@163.com";
-    public static final String password = "*************";
+    public static final String password = "*********";
 
     public PasswordAuthentication getPasswordAuthentication() {
         return new PasswordAuthentication(username, password);
