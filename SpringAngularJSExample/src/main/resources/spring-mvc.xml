@@ -39,4 +39,13 @@
         <property name="contentType" value="text/html;charset=UTF-8"/>
     </bean>
 
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="/common/error"/>
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">/common/error</prop>
+            </props>
+        </property>
+     </bean>
+
 </beans>  

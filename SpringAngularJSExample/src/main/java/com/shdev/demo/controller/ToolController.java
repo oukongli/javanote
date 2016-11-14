@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/tool")
-public class ToolController {
+public class ToolController extends BaseController {
     private static Logger logger = Logger.getLogger(ToolController.class);
 
     @RequestMapping
@@ -18,14 +18,16 @@ public class ToolController {
 
     @RequestMapping("/fcr")
     public String loadFcrPage(@RequestParam(value = "ywlsh", defaultValue = StringUtils.EMPTY) String ywlsh,
-                              @RequestParam( defaultValue = StringUtils.EMPTY) String jylsh) {
+                              @RequestParam(defaultValue = StringUtils.EMPTY) String jylsh) {
         logger.info(ywlsh);
         logger.info(jylsh);
         return "tool/fcr";
     }
 
     @RequestMapping("/ics")
-    public String loadIcsPage() {
+    public String loadIcsPage() throws Exception {
+        if (true)
+            throw new Exception("11111111111");
         return "tool/ics";
     }
 }

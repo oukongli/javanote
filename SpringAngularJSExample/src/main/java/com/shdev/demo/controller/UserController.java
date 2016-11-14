@@ -16,7 +16,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/users")
-public class UserController {
+public class UserController extends BaseController {
     private static Logger logger = Logger.getLogger(UserController.class);
 
     @Resource
@@ -25,13 +25,15 @@ public class UserController {
     @RequestMapping("/userlist.json")
     @ResponseBody
     public List<User> getUserList(@RequestParam(value = "ywlsh", defaultValue = StringUtils.EMPTY) String ywlsh,
-                                  @RequestParam(defaultValue = StringUtils.EMPTY) String jylsh) {
+                                  @RequestParam(defaultValue = StringUtils.EMPTY) String jylsh) throws Exception {
         if (ywlsh.equals("0"))
             DynamicDataSourceHolder.setDataSourceType((DataSourceType) null);
         if (ywlsh.equals("1"))
             DynamicDataSourceHolder.setDataSourceType("oracle");
         if (ywlsh.equals("2"))
             DynamicDataSourceHolder.setDataSourceType("mysql");
+        if (ywlsh.equals("error"))
+            throw new Exception("test exception");
         logger.info(ywlsh);
         logger.info(jylsh);
         logger.info("get user list");
