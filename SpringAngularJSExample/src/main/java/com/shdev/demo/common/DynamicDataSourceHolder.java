@@ -5,6 +5,10 @@ public class DynamicDataSourceHolder {
         Universe.current().setDataSourceType(dataSourceType);
     }
 
+    public static void setDataSourceType(String dataSourceType) {
+        Universe.current().setDataSourceType(DataSourceType.typeOf(dataSourceType));
+    }
+
     public static DataSourceType getDataSourceType() {
         return Universe.current().getDataSourceType();
     }

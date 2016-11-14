@@ -27,11 +27,11 @@ public class UserController {
     public List<User> getUserList(@RequestParam(value = "ywlsh", defaultValue = StringUtils.EMPTY) String ywlsh,
                                   @RequestParam(defaultValue = StringUtils.EMPTY) String jylsh) {
         if (ywlsh.equals("0"))
-            DynamicDataSourceHolder.setDataSourceType(null);
+            DynamicDataSourceHolder.setDataSourceType((DataSourceType) null);
         if (ywlsh.equals("1"))
-            DynamicDataSourceHolder.setDataSourceType(DataSourceType.typeOf("oracle"));
+            DynamicDataSourceHolder.setDataSourceType("oracle");
         if (ywlsh.equals("2"))
-            DynamicDataSourceHolder.setDataSourceType(DataSourceType.typeOf("mysql"));
+            DynamicDataSourceHolder.setDataSourceType("mysql");
         logger.info(ywlsh);
         logger.info(jylsh);
         logger.info("get user list");
