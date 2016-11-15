@@ -12,15 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 public abstract class BaseController {
     private static final Logger logger = Logger.getLogger(BaseController.class);
 
-//    @ExceptionHandler(Exception.class)
-//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-//    public ModelAndView handleException(HttpServletRequest request, Exception e) {
-//        ModelAndView modelAndView = new ModelAndView("common/error");
-//        modelAndView.addObject("message", e.getMessage());
-//        modelAndView.addObject("exception", ExceptionUtils.getStackTrace(e));
-//        logger.error("message: " + e.getMessage());
-//        logger.error("exception: " + ExceptionUtils.getStackTrace(e));
-//
-//        return modelAndView;
-//    }
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ModelAndView handleException(HttpServletRequest request, Exception e) {
+        ModelAndView modelAndView = new ModelAndView("common/error");
+        modelAndView.addObject("message", e.getMessage());
+        modelAndView.addObject("exception", ExceptionUtils.getStackTrace(e));
+        logger.error("message: " + e.getMessage());
+        logger.error("exception: " + ExceptionUtils.getStackTrace(e));
+
+        return modelAndView;
+    }
 }

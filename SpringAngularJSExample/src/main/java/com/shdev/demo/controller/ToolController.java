@@ -27,7 +27,7 @@ public class ToolController extends BaseController {
     @RequestMapping("/ics")
     public String loadIcsPage() throws Exception {
         if (true)
-            throw new Exception("11111111111");
+            throw new Exception("not supported now");
         return "tool/ics";
     }
 }

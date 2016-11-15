@@ -32,3 +32,22 @@ var bcmp_tool_controller = function ($scope, $http) {
         });
     };
 };
+
+var interceptor = ['$rootScope', '$q', function (scope, $q) {
+    function success(response) {
+        return response;
+    }
+
+    function error(response) {
+        $("#error-info").html(response.data).dialog(UI.dialogOptions()).dialog("open");
+        return $q.reject(response);
+    }
+
+    return function (promise) {
+        return promise.then(success, error);
+    }
+}];
+
+App.config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.responseInterceptors.push(interceptor);
+}]);

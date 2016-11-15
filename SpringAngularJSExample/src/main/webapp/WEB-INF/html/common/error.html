@@ -8,38 +8,38 @@
 </head>
 <body class="logo">
 <div id="error-page-content" class="content-container container">
-    <div id="error-page-header" class="header">
-        <a href="#">
-            <small>
-                <i class="icon-leaf"></i>
-                error
-            </small>
-        </a>
-    </div>
+    <!--<div id="error-page-header" class="header hidden">-->
+    <!--<a href="#">-->
+    <!--<small>-->
+    <!--<i class="icon-leaf"></i>-->
+    <!--error-->
+    <!--</small>-->
+    <!--</a>-->
+    <!--</div>-->
 
     <div class="panel panel-danger">
         <div class="panel-heading">Oops! Something went wrong. Please see the details below!</div>
         <div class="panel-body" style="overflow-x: hidden;">
-            <!--<p><b>{{message}}</b></p>            <br/>-->
-
-            <!--<p>{{exception}}</p>-->
+            <p><b>${message}</b></p>
+            <br/>
+            <p>${exception}</p>
         </div>
     </div>
 
 </div>
 
-<div id="error-page-footer" class="footer">
-    "footer.copyright"
-</div>
+<!--<div id="error-page-footer" class="footer hidden">-->
+<!--"footer.copyright"-->
+<!--</div>-->
 
 <script type="text/javascript">
-//    if (typeof jQuery !== "undefined") {
-//        $(document).ready(function () {
-//            $("#error-page-header").hide();
-//            $("#error-page-footer").hide();
-//            $("#error-page-content").removeClass("content-container");
-//        })
-//    }
+    //    if (typeof jQuery !== "undefined") {
+    //        $(document).ready(function () {
+    //            $("#error-page-header").hide();
+    //            $("#error-page-footer").hide();
+    //            $("#error-page-content").removeClass("content-container");
+    //        })
+    //    }
 </script>
 </body>
 </html>
