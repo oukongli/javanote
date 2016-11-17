@@ -25,6 +25,14 @@ var UI = {
     }
 };
 
+function template(template, data) {
+    return template.replace(/\{([\w\.]*)\}/g, function(str, key, offset, source) {
+        var keys = key.split("."), v = data[keys.shift()];
+        for (var i = 0, l = keys.length; i < l; i++) { v = v[keys[i]]; }
+        return (typeof v !== "undefined" && v !== null) ? v : "";
+    });
+}
+
 $(function () {
     $(document).ajaxError(function (event, jqXHR) {
         if (jqXHR.statusText === "abort") {
