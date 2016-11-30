@@ -121,4 +121,18 @@ public final class CommonUtils {
         }
         return null;
     }
+    
+    public static <T> List<List<T>> partitionList(List<T> originalList,
+			int pageSize) {
+		List<List<T>> listOfChunks = new ArrayList<List<T>>();
+		for (int i = 0; i < originalList.size() / pageSize; i++) {
+			listOfChunks.add(originalList.subList(i * pageSize, i * pageSize
+					+ pageSize));
+		}
+		if (originalList.size() % pageSize != 0) {
+			listOfChunks.add(originalList.subList(originalList.size()
+					- originalList.size() % pageSize, originalList.size()));
+		}
+		return listOfChunks;
+	}
 }
