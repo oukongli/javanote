@@ -233,11 +233,11 @@
 
     <distributionManagement>
         <repository>
-            <id>oss</id>
+            <id>releases</id>
             <url>http://www.ouyangkongli.xyz:8081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>oss</id>
+            <id>releases</id>
             <url>http://www.ouyangkongli.xyz:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
