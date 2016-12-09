@@ -1,4 +1,4 @@
-package com.shdev.demo.service;
+package com.shdev.demo.service.def;
 
 
 import com.shdev.demo.model.User;

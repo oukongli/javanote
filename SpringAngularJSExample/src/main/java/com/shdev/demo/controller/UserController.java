@@ -1,10 +1,9 @@
 package com.shdev.demo.controller;
 
 import com.shdev.demo.common.DataSourceType;
-import com.shdev.demo.common.DynamicDataSource;
 import com.shdev.demo.common.DynamicDataSourceHolder;
 import com.shdev.demo.model.User;
-import com.shdev.demo.service.UserService;
+import com.shdev.demo.service.def.UserService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;

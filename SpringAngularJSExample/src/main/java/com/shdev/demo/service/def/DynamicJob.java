@@ -1,4 +1,4 @@
-package com.shdev.demo.service;
+package com.shdev.demo.service.def;
 
 public interface DynamicJob {
     void execute();

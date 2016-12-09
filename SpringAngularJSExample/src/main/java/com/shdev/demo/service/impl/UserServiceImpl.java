@@ -3,7 +3,7 @@ package com.shdev.demo.service.impl;
 
 import com.shdev.demo.dao.IUserDao;
 import com.shdev.demo.model.User;
-import com.shdev.demo.service.UserService;
+import com.shdev.demo.service.def.UserService;
 import org.springframework.beans.factory.annotation.Required;
 
 import java.util.List;
