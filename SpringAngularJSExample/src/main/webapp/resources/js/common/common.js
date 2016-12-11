@@ -22,6 +22,15 @@ var UI = {
             $.extend(settings, options);
         }
         return settings;
+    },
+
+    convertToObj: function(param) {
+        var data;
+        if(Object.prototype.toString.call(param) == "[object String]")
+            data = eval('(' + param + ')');
+        if(Object.prototype.toString.call(param) == "[object Object]" || Object.prototype.toString.call(param) == "[object Array]")
+            data = param;
+        return data;
     }
 };
 
