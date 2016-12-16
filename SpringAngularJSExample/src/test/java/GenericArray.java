@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -26,5 +26,7 @@ public class GenericArray<T> {
     public static void main(String[] args) {
         GenericArray<Integer> array = new GenericArray<Integer>(5);
         Object[] integers = array.rep();
+
+
     }
 }
