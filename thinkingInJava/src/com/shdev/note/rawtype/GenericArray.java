@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.List;
+package com.shdev.note.rawtype;
 
 /**
  * Created by ou_ko on 2016/12/14.

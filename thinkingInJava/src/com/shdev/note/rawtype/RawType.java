@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+package com.shdev.note.rawtype;import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

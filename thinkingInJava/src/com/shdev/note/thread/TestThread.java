@@ -1,4 +1,4 @@
-import java.util.concurrent.CountDownLatch;
+package com.shdev.note.thread;import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by ou_ko on 2016/12/16.

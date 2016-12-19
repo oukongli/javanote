@@ -1,4 +1,4 @@
-package innerClass;
+package com.shdev.note.initclass;
 
 class Egg2 {
 	protected class Yolk {

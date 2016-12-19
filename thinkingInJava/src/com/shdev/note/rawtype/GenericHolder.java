@@ -1,4 +1,4 @@
-/**
+package com.shdev.note.rawtype; /**
  * Created by ou_ko on 2016/12/14.
  */
 public class GenericHolder <T> {
