@@ -48,13 +48,16 @@ public class TestDML {
         Connection connection = DBManager4Oracle.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("insert into student(name, age ,sex) values (?,?,?)");
         long start = System.currentTimeMillis();
-        for (long i = 0; i < 123456; i++) {
+        for (long i = 0; i < 9999999; i++) {
             preparedStatement.setString(1, "用户");
             preparedStatement.setInt(2, 50);
             preparedStatement.setString(3, "female");
             preparedStatement.addBatch();
-            if (i % 5000 == 0)
+            if (i % 5000 == 0) {
                 preparedStatement.executeBatch();
+            }
+            if (i % 100000 == 0)
+                connection.commit();
         }
         preparedStatement.executeBatch();
         connection.commit();
