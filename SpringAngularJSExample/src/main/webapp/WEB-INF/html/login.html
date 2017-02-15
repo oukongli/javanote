@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="utf-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/resources/css/app.css"/>
+    <link rel="stylesheet" href="/resources/css/jquery-ui.css"/>
+</head>
+
+<body class="h w logo">
+
+<div class="div-signin">
+    <form class="form-horizontal form-signin" action="/login?url=${redirectUrl}" method="post">
+        <h2 class="form-signin-heading">welcome</h2>
+
+        <div class="form-group">
+            <label class="control-label" for="email">login</label>
+            <input type="text" id="email" name="email" class="input-block-level required form-control email"
+                   data-enter-target="#login-button" placeholder="Email address"/>
+            <span class="required-field">*</span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="password">password</label>
+            <input type="password" id="password" name="password" class="input-block-level required form-control"
+                   data-enter-target="#login-button" placeholder="Password"/>
+            <span class="required-field">*</span>
+        </div>
+        <div class="form-group">
+            <div style="margin-left: 100px;">
+                <a id="login-button" href="#" type="submit" data-type=submit class="btn btn-lg btn-primary">signIn</a>
+                <span class="text-danger"></span>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
+
+
+
+
+

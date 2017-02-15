@@ -8,6 +8,7 @@ public final class Universe {
 
     private static ThreadLocal<Universe> current = new ThreadLocal<Universe>();
     private DataSourceType dataSourceType;
+    private String subject;
 
     private Universe() {
 //        dataSourceType = DataSourceType.DEFAULT_DATA_SOURCE;
@@ -33,5 +34,13 @@ public final class Universe {
 
     public void setDataSourceType(DataSourceType dataSourceType) {
         this.dataSourceType = dataSourceType;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }

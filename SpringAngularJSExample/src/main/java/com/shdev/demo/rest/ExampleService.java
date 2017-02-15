@@ -9,9 +9,9 @@ import java.util.List;
 @Path("/example")
 @Produces("application/json")
 public interface ExampleService {
-    @GET
-    @Path("/{id}")
-    ExampleModel get(@PathParam("id") String id);
+//    @GET
+//    @Path("/{id}")
+//    ExampleModel get(@PathParam("id") String id);
 
     @GET
     @Path("/all/{id}")
