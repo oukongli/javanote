@@ -24,7 +24,6 @@ public class OrnamentalGarden {
         System.out.println("Total: " + Entrance.getTotalCount());
         System.out.println("Sum of Entrances: " + Entrance.sumEntrances());
     }
-
 }
 
 class Count {
