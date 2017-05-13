@@ -7,7 +7,10 @@ import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousCloseException;
 import java.nio.channels.ClosedByInterruptException;
 import java.nio.channels.SocketChannel;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by ouyangkongli on 2017/4/28.
@@ -38,6 +41,7 @@ class NIOBlocked implements Runnable {
 public class NIOInterruption {
     public static void main(String[] args) throws IOException, InterruptedException {
         ExecutorService executorService = Executors.newCachedThreadPool();
+        ServerSocket serverSocket = new ServerSocket(8080);
         InetSocketAddress isa = new InetSocketAddress("localhost", 8080);
         SocketChannel sc1 = SocketChannel.open(isa);
         SocketChannel sc2 = SocketChannel.open(isa);
