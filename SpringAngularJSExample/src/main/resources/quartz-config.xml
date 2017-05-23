@@ -17,7 +17,7 @@
         <property name="name" value="job_work_name"/>
         <property name="concurrent" value="false"/>
         <property name="targetObject" ref="myTask"/>
-        <property name="targetMethod" value="execute"/>
+        <property name="targetMethod" value="flush"/>
     </bean>
 
 
