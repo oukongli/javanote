@@ -1,4 +1,4 @@
-package com.shdev.note.thread.concurrency.Simulation;
+package com.shdev.note.thread.concurrency.Simulation.v1;
 
 import java.util.LinkedList;
 import java.util.PriorityQueue;
